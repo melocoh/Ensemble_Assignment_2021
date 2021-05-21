@@ -1,10 +1,11 @@
-import _ from "lodash";
+import _, { lowerCase } from "lodash";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GetPokemonList } from "../actions/Actions";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import { MAX_PER_PAGE, PAGE_RANGE, MARGIN_PAGE } from "../utils/Constants";
+import {InputLowerCase} from '../utils/InputLowerCase';
 
 /**
  * A component that produces a list of pokemon
@@ -61,7 +62,7 @@ const PokemonList = (props) => {
     <div>
       <div className={"search-wrapper"}>
         <p>Search: </p>
-        <input type="text" onChange={(e) => setSearch(e.target.value)} />
+        <input type="text" style={{textTransform: lowerCase}} onChange={(e) => setSearch(e.target.value)} onInput={InputLowerCase} />
         <button onClick={() => props.history.push(`/pokemon/${search}`)}>
           Search
         </button>
