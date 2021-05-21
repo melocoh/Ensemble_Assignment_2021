@@ -10,6 +10,12 @@ const DefaultState = {
   count: 0,
 };
 
+/**
+ * Reducer for handling the state of fetching a list of pokemon
+ * @param state 
+ * @param action 
+ * @returns new state 
+ */
 const ListReducer = (state = DefaultState, action) => {
   switch (action.type) {
     case POKEMON_LIST_LOADING:

@@ -7,18 +7,22 @@ import {
   POKEMON_MULTIPLE_SUCCESS,
   POKEMON_MULTIPLE_FAIL,
 } from "./Types";
+import { MAX_PER_PAGE } from "../utils/Constants";
 
+/**
+ * HTTP GET method that fetches all pokemon in the API
+ * @param page
+ * @returns dispatch obj
+ */
 export const GetPokemonList = (page) => async (dispatch) => {
   try {
     dispatch({
       type: POKEMON_LIST_LOADING,
     });
 
-    const perPage = 15;
-    const offset = page * perPage - perPage;
-
+    const offset = page * MAX_PER_PAGE - MAX_PER_PAGE;
     const res = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon?limit=15&offset=${offset}`
+      `https://pokeapi.co/api/v2/pokemon?limit=${MAX_PER_PAGE}&offset=${offset}`
     );
 
     dispatch({
@@ -32,6 +36,11 @@ export const GetPokemonList = (page) => async (dispatch) => {
   }
 };
 
+/**
+ * HTTP GET method that fetches a single pokemon and its description
+ * @param pokemon
+ * @returns dispatch obj
+ */
 export const GetPokemon = (pokemon) => async (dispatch) => {
   try {
     dispatch({

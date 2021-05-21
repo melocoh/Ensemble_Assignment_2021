@@ -10,6 +10,12 @@ const DefaultState = {
   errorMsg: "",
 };
 
+/**
+ * Reducer for handling the state of fetching a single pokemon
+ * @param state 
+ * @param action 
+ * @returns new state 
+ */
 const MultipleReducer = (state = DefaultState, action) => {
   switch (action.type) {
     case POKEMON_MULTIPLE_LOADING:
